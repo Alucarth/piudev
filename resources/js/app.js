@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 Vue.component('person-list',require('./components/person/list.vue').default);
+Vue.component('proyect-component',require('./components/person/proyect.vue').default);
 
 const app = new Vue({
     el: '#app',

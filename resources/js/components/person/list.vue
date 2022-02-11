@@ -18,13 +18,25 @@
 
 
                 <vue-bootstrap4-table :rows="personas" :columns="columns" :config="config">
+                    <template slot="option" slot-scope="props">
+                        <a :href="url+'/'+props.row.id" class="btn btn-info"> <i class="fas fa-folder"></i></a>
+                        <!-- <v-icon  small>
+                            remove_red_eye
+                        </v-icon> -->
+                        <!-- <v-icon @click="edit(props.row)" small>
+                            edit
+                        </v-icon>
+                        <v-icon @click="destroy(props.row)" small>
+                            delete
+                        </v-icon> -->
+                    </template>
                 </vue-bootstrap4-table>
 
 
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              Footer
+              <!-- Footer -->
             </div>
             <!-- /.card-footer-->
           </div>
@@ -36,42 +48,9 @@ import VueBootstrap4Table from 'vue-bootstrap4-table'
 
 
 export default {
-    props:['personas'],
+    props:['personas','url'],
     data:()=>({
-             rows: [{
-                    "id": 1,
-                    "name": {
-                        "first_name": "Vladimir",
-                        "last_name": "Nitzsche"
-                    },
-                    "address": {
-                        "country": "Mayotte"
-                    },
-                    "email": "franecki.anastasia@gmail.com",
-                },
-                {
-                    "id": 2,
-                    "name": {
-                        "first_name": "Irwin",
-                        "last_name": "Bayer"
-                    },
-                    "age": 23,
-                    "address": {
-                        "country": "Guernsey"
-                    },
-                    "email": "rlittle@macejkovic.biz",
-                },
-                {
-                    "id": 3,
-                    "name": {
-                        "first_name": "Don",
-                        "last_name": "Herman"
-                    },
-                    "address": {
-                        "country": "Papua New Guinea"
-                    },
-                    "email": "delia.becker@cormier.com",
-                }],
+
             columns: [{
                     label: "id",
                     name: "id",
@@ -149,6 +128,11 @@ export default {
                     name: "email",
                     sort: true,
                 },
+                {
+                    label: "Opciones",
+                    name: "option",
+                    sort: false,
+                }
 
                 ],
         config: {

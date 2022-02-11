@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-<person-list :personas="{{json_encode($personas)}}"/>
+<person-list :personas="{{json_encode($personas)}}" url="{{url('proyectos/')}}" />
 @endsection
