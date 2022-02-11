@@ -41,6 +41,7 @@
                             <td>{{item.transaction_number}}</td>
                             <td>
                                 <button class="btn btn-danger btn-sm">  <i class="fa fa-trash"></i> </button>
+                                <a :href="url_pays+'/'+item.id" class="btn btn-info btn-sm"> <i class="fas fa-money-bill-wave"></i> </a>
                             </td>
                         </tr>
                     </tbody>
@@ -73,7 +74,7 @@
             <!-- <form class="form-horizontal"> -->
         <div class="modal-body">
             <div v-html='csrf'></div>
-            <input type="text" :value="JSON.stringify(form)" name="json_string" >
+            <input type="text" :value="JSON.stringify(form)" name="json_string" hidden>
             <div class="form-group">
                 <label >Nombre Convocatoria / Concurso / Financiamiento Directo </label>
                 <input type="text" class="form-control" placeholder="" v-model="form.name">
@@ -125,7 +126,7 @@
 </template>
 <script>
 export default {
-    props:['proyectos', 'persona','url','csrf'],
+    props:['proyectos', 'persona','url','url_pays','csrf'],
     data:()=>({
         form:{},
     }),

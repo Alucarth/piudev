@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Proyect;
+use App\Models\Pay;
 
 class PersonController extends Controller
 {
@@ -55,6 +56,28 @@ class PersonController extends Controller
         $proyect->save();
 
         return redirect('proyectos/'.$proyect->person_id);
+    }
+
+    public function pays($proyect_id)
+    {
+        $proyecto = Proyect::find($proyect_id);
+        $pays = Pay::where('proyect_id',$proyect_id)->get();
+        return view('person.pays',compact('proyecto','pays'));
+    }
+
+    public function store_pay(Request $request)
+    {
+        $object = json_decode($request->json_string);
+        $pay = new Pay;
+        $pay->detail = $object->detail;
+        $pay->number = $object->number;
+        $pay->state = $object->state;
+        $pay->amount = $object->amount;
+        $pay->proyect_id = $object->proyect_id;
+        $pay->save();
+
+        return redirect('pagos/'.$pay->proyect_id);
+
     }
 
     /**

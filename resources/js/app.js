@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 Vue.component('person-list',require('./components/person/list.vue').default);
 Vue.component('proyect-component',require('./components/person/proyect.vue').default);
+Vue.component('pays-component',require('./components/person/pay.vue').default);
 
 const app = new Vue({
     el: '#app',

@@ -25,3 +25,6 @@ Route::resource('persona',PersonController::class);
 Route::get('proyectos/{person_id}',[PersonController::class,'listProyect']);
 Route::get('crear_proyecto/{person_id}',[PersonController::class,'createProyect']);
 Route::post('store_proyect',[PersonController::class,'store_proyect']);
+
+Route::get('pagos/{proyect_id}',[PersonController::class,'pays']);
+Route::post('store_pay',[PersonController::class,'store_pay']);
