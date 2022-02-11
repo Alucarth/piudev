@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostulationController;
+use App\Http\Controllers\PersonController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,9 @@ use App\Http\Controllers\PostulationController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/app');
 });
 
 Route::get('lista_postulantes',[PostulationController::class,'lista_postulantes']);
+
+Route::resource('persona',PersonController::class);
